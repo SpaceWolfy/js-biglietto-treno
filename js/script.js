@@ -20,3 +20,6 @@ dal calcolo del prezzo in base ai km, senza considerare gli sconti suddivisi per
 let kmNum = prompt("Quanti chilometri intendi percorrere?");
 //specifico che kmNum deve essere un numero.
 kmNum = parseInt(kmNum);
+
+//determino il funzionamento del prompt relativo all'età dell'utente
+let passAge = prompt("Quanti anni hai?");
