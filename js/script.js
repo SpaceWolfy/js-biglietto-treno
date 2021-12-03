@@ -23,3 +23,7 @@ kmNum = parseInt(kmNum);
 
 //determino il funzionamento del prompt relativo all'età dell'utente
 let passAge = prompt("Quanti anni hai?");
+
+//Creo una variabile atta a rappresentare il prezzo del viaggio senza sconti:
+let nodiscountPrice = kmNum * 0.21;
+/* console.log(nodiscountPrice); */
