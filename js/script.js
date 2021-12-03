@@ -27,3 +27,6 @@ let passAge = prompt("Quanti anni hai?");
 //Creo una variabile atta a rappresentare il prezzo del viaggio senza sconti:
 let nodiscountPrice = kmNum * 0.21;
 /* console.log(nodiscountPrice); */
+
+//definisco in quale elemento HTML verrà stampata l'informazione di cui ho bisogno
+let outputHtml = document.getElementById("prezzo-tot-viaggio");
