@@ -33,8 +33,16 @@ let outputHtml = document.getElementById("prezzo-tot-viaggio");
 
 //Imposto ciò che mi è necessario per il funzionamento degli operatori:
 //definisco una variabile relativa allo sconto del 20%
-let twentyDiscount = nodiscountPrice * 0.2;
+let twentyDiscount = nodiscountPrice * 0.8;
 console.log(twentyDiscount);
 //definisco una variabile relativa allo sconto del 40%
-let fortyDiscount = nodiscountPrice * 0.4;
+let fortyDiscount = nodiscountPrice * 0.6;
 console.log(fortyDiscount);
+
+if (passAge < 18) {
+  outputHtml.innerHTML = `${twentyDiscount}`;
+} else if (passAge > 65) {
+  outputHtml.innerHTML = `${fortyDiscount}`;
+} else {
+  outputHtml.innerHTML = `${nodiscountPrice}`;
+}
