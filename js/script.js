@@ -26,6 +26,7 @@ let passAge = prompt("Quanti anni hai?");
 passAge = parseInt(passAge);
 //Creo una variabile atta a rappresentare il prezzo del viaggio senza sconti:
 let nodiscountPrice = kmNum * 0.21;
+//il toFixed(2) permette di mostrare un massimo di due decimali
 nodiscountPrice = +nodiscountPrice.toFixed(2);
 console.log(nodiscountPrice);
 
@@ -42,10 +43,33 @@ let fortyDiscount = nodiscountPrice * 0.6;
 fortyDiscount = +fortyDiscount.toFixed(2);
 console.log(fortyDiscount);
 
+/* 
+- Se l'età del passeggero è minore di 18 anni, allora verrà mostrato il prezzo con uno sconto del 20%;
+- Altrimenti se l'età del passeggero è maggiore di 65 anni, allora verrà mostrato il prezzo con uno sconto del 40%
+- Altrimenti verrà mostrato il prezzo senza sconti
+*/
 if (passAge < 18) {
-  outputHtml.innerHTML = `${twentyDiscount}`;
+  outputHtml.innerHTML =
+    "Il prezzo del biglietto è " + `${twentyDiscount}` + "€";
 } else if (passAge > 65) {
-  outputHtml.innerHTML = `${fortyDiscount}`;
+  outputHtml.innerHTML =
+    "Il prezzo del biglietto è " + `${fortyDiscount}` + "€";
 } else {
-  outputHtml.innerHTML = `${nodiscountPrice}`;
+  outputHtml.innerHTML =
+    "Il prezzo del biglietto è " + `${nodiscountPrice}` + "€";
+}
+
+//Bonus: blocco i prompt su valori esclusivamente numerici
+/* Questi operatori consentono una verifica sulla variabile ricevuta dai prompt, bloccando la visualizzazione di un prezzo e segnalando un 
+problema tramite alert in caso non siano stati inseriti valori numerici dall'utente */
+if (isNaN(kmNum)) {
+  alert("I chilometri devono essere espressi numericamente");
+  outputHtml.innerHTML =
+    "Sei sicuro di aver inserito correttamente i dati? Ti preghiamo di compiere nuovamente la procedura";
+}
+
+if (isNaN(passAge)) {
+  alert("L'età del passeggero deve essere espressa numericamente");
+  outputHtml.innerHTML =
+    "Sei sicuro di aver inserito correttamente i dati? Ti preghiamo di compiere nuovamente la procedura";
 }
