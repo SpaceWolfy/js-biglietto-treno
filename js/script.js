@@ -15,3 +15,8 @@ dal calcolo del prezzo in base ai km, senza considerare gli sconti suddivisi per
 - il risultato deve essere approssimato a massimo 2 decimali, al fine di indicare i centesimi sul prezzo.
 - stabilire un collegamento con l'elemento html che presenterà il risultato.
 */
+
+//determino il funzionamento del prompt relativo ai km da percorrere
+let kmNum = prompt("Quanti chilometri intendi percorrere?");
+//specifico che kmNum deve essere un numero.
+kmNum = parseInt(kmNum);
