@@ -26,7 +26,8 @@ let passAge = prompt("Quanti anni hai?");
 passAge = parseInt(passAge);
 //Creo una variabile atta a rappresentare il prezzo del viaggio senza sconti:
 let nodiscountPrice = kmNum * 0.21;
-/* console.log(nodiscountPrice); */
+nodiscountPrice = +nodiscountPrice.toFixed(2);
+console.log(nodiscountPrice);
 
 //definisco in quale elemento HTML verrà stampata l'informazione di cui ho bisogno
 let outputHtml = document.getElementById("prezzo-tot-viaggio");
@@ -34,9 +35,11 @@ let outputHtml = document.getElementById("prezzo-tot-viaggio");
 //Imposto ciò che mi è necessario per il funzionamento degli operatori:
 //definisco una variabile relativa allo sconto del 20%
 let twentyDiscount = nodiscountPrice * 0.8;
+twentyDiscount = +twentyDiscount.toFixed(2);
 console.log(twentyDiscount);
 //definisco una variabile relativa allo sconto del 40%
 let fortyDiscount = nodiscountPrice * 0.6;
+fortyDiscount = +fortyDiscount.toFixed(2);
 console.log(fortyDiscount);
 
 if (passAge < 18) {
