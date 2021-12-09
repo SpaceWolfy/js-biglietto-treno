@@ -19,57 +19,63 @@ dal calcolo del prezzo in base ai km, senza considerare gli sconti suddivisi per
 //determino il funzionamento del prompt relativo ai km da percorrere
 let kmNum = prompt("Quanti chilometri intendi percorrere?");
 //specifico che kmNum deve essere un numero.
-kmNum = parseInt(kmNum);
+kmNum = parseInt(kmNum); //si può anche scrivere let kmNum= parseInt(prompt('Inserisci il numero di chilometri'));
 
 //determino il funzionamento del prompt relativo all'età dell'utente
 let passAge = prompt("Quanti anni hai?");
 passAge = parseInt(passAge);
-//Creo una variabile atta a rappresentare il prezzo del viaggio senza sconti:
-let nodiscountPrice = kmNum * 0.21;
-//il toFixed(2) permette di mostrare un massimo di due decimali
-nodiscountPrice = +nodiscountPrice.toFixed(2);
-console.log(nodiscountPrice);
 
-//definisco in quale elemento HTML verrà stampata l'informazione di cui ho bisogno
-let outputHtml = document.getElementById("prezzo-tot-viaggio");
+/* Qui creo un bottone che una volta cliccato permetterà al codice di far procedere la function relativa al click */
+const button = document.getElementById("button-box");
 
-//Imposto ciò che mi è necessario per il funzionamento degli operatori:
-//definisco una variabile relativa allo sconto del 20%
-let twentyDiscount = nodiscountPrice * 0.8;
-twentyDiscount = +twentyDiscount.toFixed(2);
-console.log(twentyDiscount);
-//definisco una variabile relativa allo sconto del 40%
-let fortyDiscount = nodiscountPrice * 0.6;
-fortyDiscount = +fortyDiscount.toFixed(2);
-console.log(fortyDiscount);
+button.addEventListener("click", function () {
+  //Creo una variabile atta a rappresentare il prezzo del viaggio senza sconti:
+  let nodiscountPrice = kmNum * 0.21; //converrebbe mettere 0.21 ad inizio pagina come variabile costante.
+  //il toFixed(2) permette di mostrare un massimo di due decimali - in questo caso ho cancellato i decimali.
+  nodiscountPrice = +nodiscountPrice.toFixed(2);
+  console.log(nodiscountPrice);
 
-/* 
+  //definisco in quale elemento HTML verrà stampata l'informazione di cui ho bisogno
+  let outputHtml = document.getElementById("prezzo-tot-viaggio");
+
+  //Imposto ciò che mi è necessario per il funzionamento degli operatori:
+  //definisco una variabile relativa allo sconto del 20%
+  let twentyDiscount = nodiscountPrice * 0.8;
+  twentyDiscount = +twentyDiscount.toFixed(2);
+  console.log(twentyDiscount);
+  //definisco una variabile relativa allo sconto del 40%
+  let fortyDiscount = nodiscountPrice * 0.6;
+  fortyDiscount = +fortyDiscount.toFixed(2);
+  console.log(fortyDiscount);
+
+  /* 
 - Se l'età del passeggero è minore di 18 anni, allora verrà mostrato il prezzo con uno sconto del 20%;
 - Altrimenti se l'età del passeggero è maggiore di 65 anni, allora verrà mostrato il prezzo con uno sconto del 40%
 - Altrimenti verrà mostrato il prezzo senza sconti
 */
-if (passAge < 18) {
-  outputHtml.innerHTML =
-    "Il prezzo del biglietto è " + `${twentyDiscount}` + "€";
-} else if (passAge > 65) {
-  outputHtml.innerHTML =
-    "Il prezzo del biglietto è " + `${fortyDiscount}` + "€";
-} else {
-  outputHtml.innerHTML =
-    "Il prezzo del biglietto è " + `${nodiscountPrice}` + "€";
-}
+  if (passAge < 18) {
+    outputHtml.innerHTML =
+      "Il prezzo del biglietto è " + `${twentyDiscount}` + "€";
+  } else if (passAge > 65) {
+    outputHtml.innerHTML =
+      "Il prezzo del biglietto è " + `${fortyDiscount}` + "€";
+  } else {
+    outputHtml.innerHTML =
+      "Il prezzo del biglietto è " + `${nodiscountPrice}` + "€";
+  }
 
-//Bonus: blocco i prompt su valori esclusivamente numerici
-/* Questi operatori consentono una verifica sulla variabile ricevuta dai prompt, bloccando la visualizzazione di un prezzo e segnalando un 
+  //Bonus: blocco i prompt su valori esclusivamente numerici
+  /* Questi operatori consentono una verifica sulla variabile ricevuta dai prompt, bloccando la visualizzazione di un prezzo e segnalando un 
 problema tramite alert in caso non siano stati inseriti valori numerici dall'utente */
-if (isNaN(kmNum)) {
-  alert("I chilometri devono essere espressi numericamente");
-  outputHtml.innerHTML =
-    "Sei sicuro di aver inserito correttamente i dati? Ti preghiamo di compiere nuovamente la procedura";
-}
+  if (isNaN(kmNum)) {
+    alert("I chilometri devono essere espressi numericamente");
+    outputHtml.innerHTML =
+      "Sei sicuro di aver inserito correttamente i dati? Ti preghiamo di compiere nuovamente la procedura";
+  }
 
-if (isNaN(passAge)) {
-  alert("L'età del passeggero deve essere espressa numericamente");
-  outputHtml.innerHTML =
-    "Sei sicuro di aver inserito correttamente i dati? Ti preghiamo di compiere nuovamente la procedura";
-}
+  if (isNaN(passAge)) {
+    alert("L'età del passeggero deve essere espressa numericamente");
+    outputHtml.innerHTML =
+      "Sei sicuro di aver inserito correttamente i dati? Ti preghiamo di compiere nuovamente la procedura";
+  }
+});
